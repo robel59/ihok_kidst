@@ -11,7 +11,7 @@ jobs:
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+          ssh-private-key: "SHA256:K0RQ3p9LWWqEzQxRv0mv6E1Iz41SlHKGv6wycyr8E1c" #${{ secrets.DEPLOY_KEY }} SHA256:K0RQ3p9LWWqEzQxRv0mv6E1Iz41SlHKGv6wycyr8E1c ubuntu@ip-172-31-26-122
 
       - name: SSH into EC2 and run ls
         run: |
