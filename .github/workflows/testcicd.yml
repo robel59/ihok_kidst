@@ -1,4 +1,4 @@
-name: Run ls command on EC2
+name: Run ls command in a specific directory on EC2
 
 on:
   workflow_dispatch: # This allows you to manually trigger the workflow
@@ -11,8 +11,9 @@ jobs:
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }} #SHA256:K0RQ3p9LWWqEzQxRv0mv6E1Iz41SlHKGv6wycyr8E1c ubuntu@ip-172-31-26-122
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: SSH into EC2 and run ls
+      - name: SSH into EC2 and run ls in a specific directory
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-70-238-154.eu-central-1.compute.amazonaws.com 'ls /home/ubuntu'
+          ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-70-238-154.eu-central-1.compute.amazonaws.com 'ls /path/to/your/directory' > ls_output.txt
+          cat ls_output.txt
