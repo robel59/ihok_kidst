@@ -1,10 +1,10 @@
-name: Run ls command in a specific directory on EC2
+name: Run unseal_vault.sh script on EC2
 
 on:
   workflow_dispatch: # This allows you to manually trigger the workflow
 
 jobs:
-  run-ls:
+  run-script:
     runs-on: self-hosted
 
     steps:
@@ -13,7 +13,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: SSH into EC2 and run ls in a specific directory
+      - name: SSH into EC2 and run unseal_vault.sh script
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-70-238-154.eu-central-1.compute.amazonaws.com 'ls /home/ubuntu' > ls_output.txt
-          cat ls_output.txt
+          ssh -o StrictHostKeyChecking=no deployer@ec2-3-70-238-154.eu-central-1.compute.amazonaws.com './cron_scripts/unseal_vault.sh'
