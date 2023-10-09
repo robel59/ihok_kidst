@@ -1,7 +1,7 @@
 name: Run unseal_vault.sh script on EC2
 
 on:
-  workflow_dispatch: # This allows you to manually trigger the workflow
+  workflow_dispatch: # This allows you to manually trigger the workflows
 
 jobs:
   run-script:
