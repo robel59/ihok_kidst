@@ -20,4 +20,4 @@ jobs:
 
       - name: SSH into EC2 and run unseal_vault.sh script
         run: |
-          ssh -o StrictHostKeyChecking=no deployer@ec2-3-70-238-154.eu-central-1.compute.amazonaws.com './cron_scripts/unseal_vault.sh'
+          ssh -v -o StrictHostKeyChecking=no deployer@ec2-3-70-238-154.eu-central-1.compute.amazonaws.com './cron_scripts/unseal_vault.sh'
